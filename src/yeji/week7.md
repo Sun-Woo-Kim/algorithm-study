@@ -400,6 +400,22 @@ def solution(d, budget):
 #   4. 실패율을 구했다면 , 각 스테이지 번호와 묶어서 실패율을 내림차순으로 정렬
 #   5. 실패율이 같을 경우 스테이지 번호가 작은 것을 먼저 오도록 정렬
 
+
+def solution(N, stages):
+    buffer = {}
+    total = len(stages)
+    
+    for i in range(1, N+1):
+        if total != 0:
+            cnt = stages.count(i)
+            buffer[i] = cnt / total
+            total -= cnt
+        else:
+            buffer[i] = 0
+    
+    answer = sorted(buffer, key = lambda x: buffer[x], reverse = True)
+    return answer
+
 ```
 
 
